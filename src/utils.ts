@@ -2,15 +2,11 @@ import axios from 'axios';
 import { RandomWordResponse, randomWordResponse } from './types';
 import { v2 } from '@google-cloud/translate';
 import { exit } from 'process';
+import { apiKey, projectId, randomWordApi } from './constants';
 
-const projectId = process.env.PROJECT_ID;
-if (!projectId) {
-  console.error('ProjectId variable not set');
-  exit;
-}
 // Instantiates a client
 const { Translate } = v2;
-const translate = new Translate({ projectId });
+const translate = new Translate({ projectId, key: apiKey });
 
 /**
  * Read clouds.yaml file and extract fields based on auth_type.
@@ -20,12 +16,6 @@ const translate = new Translate({ projectId });
  */
 
 async function getRandomEnglishWord(): Promise<string> {
-  const randomWordApi = process.env.RANDOM_WORD_API_URL;
-
-  if (!randomWordApi) {
-    console.error('The variable RANDOM_WORD_API_URL must be set');
-    return '';
-  }
   try {
     const { data: words } = await axios.get<RandomWordResponse>(randomWordApi);
     const wordsParsed = randomWordResponse.parse(words);
@@ -48,4 +38,21 @@ export async function translateWord(): Promise<{ text: string; translation: stri
   return { text, translation };
 }
 
-translateWord();
+export function variablesFilled(): boolean {
+  let areVariableFilled = true;
+
+  if (!projectId) {
+    console.error('The variable PROJECT_ID must be set');
+    areVariableFilled = false;
+  }
+  if (!apiKey) {
+    console.error('The variable API_KEY must be set');
+    areVariableFilled = false;
+  }
+  if (!randomWordApi) {
+    console.error('The variable RANDOM_WORD_API_URL must be set');
+    areVariableFilled = false;
+  }
+
+  return areVariableFilled;
+}
