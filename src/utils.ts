@@ -15,7 +15,7 @@ const translate = new Translate({ projectId, key: apiKey });
  * @returns {null} - The OpenStackClient
  */
 
-async function getRandomEnglishWord(): Promise<string> {
+export async function getRandomEnglishWord(): Promise<string> {
   try {
     const { data: words } = await axios.get<RandomWordResponse>(randomWordApi);
     const wordsParsed = randomWordResponse.parse(words);
@@ -27,15 +27,11 @@ async function getRandomEnglishWord(): Promise<string> {
   return '';
 }
 
-export async function translateWord(): Promise<{ text: string; translation: string }> {
-  const text = await getRandomEnglishWord();
-  if (text.length < 1) {
-    return { text: '', translation: '' };
-  }
+export async function translateWord(text: string): Promise<string> {
   const target = 'fr';
   const [translation] = await translate.translate(text, target);
   console.log(`Translation: ${translation}`);
-  return { text, translation };
+  return translation;
 }
 
 export function variablesFilled(): boolean {
