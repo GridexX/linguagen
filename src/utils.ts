@@ -19,7 +19,7 @@ export async function getRandomEnglishWord(): Promise<string> {
   try {
     const { data: words } = await axios.get<RandomWordResponse>(randomWordApi);
     const wordsParsed = randomWordResponse.parse(words);
-    console.log(`Random word picked: ${wordsParsed[0]}`);
+    console.log(`[random] Random word picked: ${wordsParsed[0]}`);
     return wordsParsed[0];
   } catch (err) {
     console.error(`Error trying query the API: ${err}`);
@@ -27,10 +27,10 @@ export async function getRandomEnglishWord(): Promise<string> {
   return '';
 }
 
-export async function translateWord(text: string): Promise<string> {
-  const target = 'fr';
+export async function translateWord(text: string, target: string): Promise<string> {
+  console.log(`[translation] Translate ${text} in ${target}...`);
   const [translation] = await translate.translate(text, target);
-  console.log(`Translation: ${translation}`);
+  console.log(`[translation] Translation: ${translation}`);
   return translation;
 }
 
