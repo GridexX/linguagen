@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { RandomWordResponse, randomWordResponse } from './types';
 import { v2 } from '@google-cloud/translate';
-import { exit } from 'process';
 import { apiKey, projectId, randomWordApi } from './constants';
 
 // Instantiates a client

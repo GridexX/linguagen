@@ -4,11 +4,12 @@ FROM node:20
 # Set the environment variable
 ENV NODE_ENV=production
 ENV API_KEY=your_api_key
+ENV PROJECT_ID=your_project_id
 
 # Copy needed files
 COPY package.json .
 COPY package-lock.json .
-COPY out out
+COPY dist dist
 
 RUN npm ci
 

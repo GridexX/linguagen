@@ -2,9 +2,13 @@
   "name": "linguagen",
   "version": "1.0.0",
   "description": "A simple project to retrieve a random word and translate it in a predefined language",
-  "main": "out/index.js",
+  "main": "dist/index.js",
   "files": [
-    "out/"
+    "dist/"
+  ],
+  "pre-commit": [
+    "build",
+    "add-build"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,6 +16,7 @@
     "build": "tsc",
     "format": "prettier --write \"src/**/*.[tj]s\"",
     "lint": "eslint ",
+    "add-build": "git add dist",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
@@ -47,7 +52,9 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^16.5.0",
     "eslint-plugin-promise": "^6.1.1",
+    "pre-commit": "^1.2.2",
     "prettier": "^3.1.1",
+    "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
