@@ -3,14 +3,20 @@
 <h1 >
   <span style="color:#5FB0EF">Lingua</span>Gen
 </h1>
-
-This project provides an API to generate a random word and translate it in French.
+<h4>
+An API to generate a random word and translate them
+</h4>
+<a href="https://github.com/GridexX/linguagen/actions"><img src="https://img.shields.io/github/actions/workflow/status/GridexX/linguagen/ci.yml?label=build&logo=github&style=flat" alt="ci"></a>
+  <a href="https://linguagen.gridexx.fr"><img src="https://therealsujitk-vercel-badge.vercel.app/?app=linguagen" alt="api"></a>
+  <a href="https://github.com/GridexX/linguagen"><img src="https://img.shields.io/github/stars/GridexX/linguagen.svg?style=flat" alt="stars"></a>
+  <a href="https://github.com/GridexX/linguagen"><img src="https://img.shields.io/github/license/GridexX/linguagen.svg?style=flat" alt="license"></a>
 </div>
 
 ## Setup
 
 Follow these steps to set up and run the project.
-Prerequisites
+
+### Prerequisites
 
 - Node.js installed
 - NPM (Node Package Manager) installed
