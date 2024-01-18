@@ -1,7 +1,6 @@
 import express, { Express, Request, Response } from 'express';
 const { createProxyMiddleware } = require('http-proxy-middleware');
 import cors from 'cors';
-import serverless from 'serverless-http';
 import { getRandomEnglishWord, translateWord, variablesFilled } from './utils';
 
 const app: Express = express();
@@ -60,5 +59,3 @@ app.use(
 app.listen(port, () => {
   console.log(`[server] Server is running at http://localhost:${port}`);
 });
-
-export const handler = serverless(app);

@@ -3,11 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.handler = void 0;
 const express_1 = __importDefault(require("express"));
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const cors_1 = __importDefault(require("cors"));
-const serverless_http_1 = __importDefault(require("serverless-http"));
 const utils_1 = require("./utils");
 const app = (0, express_1.default)();
 const port = 3000;
@@ -53,4 +51,3 @@ app.use('/wiki', createProxyMiddleware({
 app.listen(port, () => {
     console.log(`[server] Server is running at http://localhost:${port}`);
 });
-exports.handler = (0, serverless_http_1.default)(app);
