@@ -7,13 +7,6 @@ import { apiKey, projectId, randomWordApi } from './constants';
 const { Translate } = v2;
 const translate = new Translate({ projectId, key: apiKey });
 
-/**
- * Read clouds.yaml file and extract fields based on auth_type.
- * @param {string} filePath - Path to the clouds.yaml file.
- * @param {string} cloudName - Name of the cloud configuration to extract.
- * @returns {null} - The OpenStackClient
- */
-
 export async function getRandomEnglishWord(): Promise<string> {
   try {
     const { data: words } = await axios.get<RandomWordResponse>(randomWordApi);
