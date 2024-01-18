@@ -6,10 +6,17 @@
   "files": [
     "dist/"
   ],
+  "pre-commit": [
+    "rm-build",
+    "build",
+    "add-build"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/index.ts",
+    "rm-build": "rimraf dist",
     "build": "tsc",
+    "add-build": "git add dist",
     "format": "prettier --write \"src/**/*.[tj]s\"",
     "lint": "eslint ",
     "prepublishOnly": "npm test && npm run lint",
@@ -46,7 +53,9 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^16.5.0",
     "eslint-plugin-promise": "^6.1.1",
+    "pre-commit": "^1.2.2",
     "prettier": "^3.1.1",
+    "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
